@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Coaching - On Your Digital</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/coaching-header.svg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .approach {
+            padding: 100px 0;
+        }
+        
+        .approach-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .approach-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 400px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .approach-image i {
+            font-size: 100px;
+            color: var(--accent-color);
+        }
+        
+        .approach-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .approach-text p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .approach-principles {
+            margin-top: 30px;
+        }
+        
+        .principle {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .principle-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .principle-icon i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+        
+        .principle-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .principle-text p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent-color);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .service-icon i {
+            font-size: 36px;
+            color: var(--accent-color);
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .service-details {
+            margin-top: 20px;
+        }
+        
+        .service-detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        
+        .service-detail-item i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .service-detail-item span {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .benefits {
+            padding: 100px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit-icon {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .benefit-icon i {
+            font-size: 40px;
+            color: var(--accent-color);
+        }
+        
+        .benefit-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .benefit-card p {
+            color: #666;
+        }
+        
+        .testimonials-alt {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card-alt {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+        
+        .testimonial-card-alt::before {
+            content: '\201C';
+            font-size: 80px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(231, 76, 60, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-content-alt {
+            position: relative;
+            z-index: 1;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-content-alt p {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .testimonial-author-alt {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .author-image i {
+            font-size: 30px;
+            color: #ccc;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .process-alt {
+            padding: 100px 0;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: rgba(231, 76, 60, 0.2);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            left: calc(50% - 10px);
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            right: calc(50% - 10px);
+        }
+        
+        .timeline-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .timeline-content p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        @media (max-width: 992px) {
+            .approach-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .approach-image {
+                order: -1;
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-item::before {
+                left: 20px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">On Your Digital</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="uniform.html">School Uniforms</a></li>
+                    <li><a href="digital.html">Digital Marketing</a></li>
+                    <li><a href="coaching.html" class="active">Life Coaching</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Holistic Healing & Life Coaching</h1>
+            <p>Achieve balance, fulfillment, and personal growth through holistic coaching</p>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="container">
+            <div class="approach-content">
+                <div class="approach-text">
+                    <h2>My Holistic Approach</h2>
+                    <p>As a certified Holistic Healing Life Coach, I believe in addressing the whole person—mind, body, and spirit—to create lasting positive change. My approach integrates various healing modalities and coaching techniques to help you overcome obstacles, discover your true potential, and create a life of balance and fulfillment.</p>
+                    <p>Unlike traditional coaching methods that focus solely on goal-setting and action plans, holistic coaching recognizes that true transformation comes from healing and aligning all aspects of your being. By addressing the root causes of challenges rather than just the symptoms, we create sustainable change that enhances every area of your life.</p>
+                    
+                    <div class="approach-principles">
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="principle-text">
+                                <h3>Mind-Body Connection</h3>
+                                <p>Recognizing and strengthening the powerful connection between mental and physical wellbeing.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="principle-text">
+                                <h3>Balance & Harmony</h3>
+                                <p>Creating equilibrium across all life domains for optimal functioning and fulfillment.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="principle-text">
+                                <h3>Authentic Self-Expression</h3>
+                                <p>Discovering and honoring your true self to live with purpose and integrity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-image">
+                    <i class="fas fa-spa"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Coaching Services</h2>
+                <p>Personalized programs to support your healing and growth journey</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Personal Development Coaching</h3>
+                    <p>Discover your strengths, overcome limiting beliefs, and create a life aligned with your authentic self and deepest values.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Self-discovery assessments</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Limiting belief transformation</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Values clarification</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Personalized growth plan</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Holistic Healing Sessions</h3>
+                    <p>Address physical, emotional, and energetic imbalances through integrated healing modalities tailored to your unique needs.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Energy healing techniques</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Emotional release work</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mindfulness practices</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Holistic lifestyle guidance</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Life Balance Coaching</h3>
+                    <p>Create harmony across all life domains—career, relationships, health, and personal growth—for a fulfilling and sustainable lifestyle.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Life wheel assessment</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Priority alignment</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Boundary setting</span>
+                        </div>
+                        <div class="service-detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sustainable lifestyle design</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Benefits of Holistic Coaching</h2>
+                <p>Experience transformative results that impact every area of your life</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mental Clarity</h3>
+                    <p>Gain clear thinking, improved focus, and enhanced decision-making abilities.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Emotional Balance</h3>
+                    <p>Develop emotional resilience and healthier responses to life's challenges.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Physical Vitality</h3>
+                    <p>Experience increased energy, better sleep, and improved overall health.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Stronger Relationships</h3>
+                    <p>Create more authentic, fulfilling connections with others.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Purpose & Direction</h3>
+                    <p>Discover your life purpose and create a meaningful path forward.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Sustainable Growth</h3>
+                    <p>Develop habits and mindsets that support ongoing personal evolution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Coaching Journey</h2>
+                <p>What to expect when working with me</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Discovery Session</h3>
+                        <p>We begin with a comprehensive assessment of your current situation, challenges, and aspirations. This session helps us identify key areas for growth and establish a foundation for our work together.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Personalized Plan Creation</h3>
+                        <p>Based on our discovery session, I develop a customized coaching plan that addresses your specific needs and goals. This plan integrates various modalities and techniques tailored to your unique situation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Regular Coaching Sessions</h3>
+                        <p>Through regular one-on-one sessions, we work together to implement your personalized plan. Each session builds upon previous progress and addresses emerging challenges and opportunities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Integration & Practice</h3>
+                        <p>Between sessions, you'll integrate new insights and practices into your daily life. I provide support materials and exercises to reinforce your learning and facilitate lasting change.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Progress Evaluation</h3>
+                        <p>We regularly assess your progress and adjust our approach as needed. This ensures that our work remains aligned with your evolving needs and goals.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Sustainable Transformation</h3>
+                        <p>As our work progresses, you'll develop the tools, awareness, and resilience to maintain your growth independently. The ultimate goal is your empowerment and sustainable transformation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Experiences</h2>
+                <p>Hear from those who have transformed their lives through holistic coaching</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card-alt">
+                    <div class="testimonial-content-alt">
+                        <p>"Working with Mary has been truly transformative. Her holistic approach helped me address not just my career challenges but also the underlying emotional patterns that were holding me back. I now have clarity, purpose, and a renewed sense of energy."</p>
+                    </div>
+                    <div class="testimonial-author-alt">
+                        <div class="author-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Jennifer L.</h4>
+                            <p>Executive & Mother of Two</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-alt">
+                    <div class="testimonial-content-alt">
+                        <p>"After years of trying different approaches to manage my stress and anxiety, Mary's holistic coaching was the breakthrough I needed. She helped me see how all aspects of my life were connected and guided me to create balance in ways I never thought possible."</p>
+                    </div>
+                    <div class="testimonial-author-alt">
+                        <div class="author-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>David M.</h4>
+                            <p>Healthcare Professional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-alt">
+                    <div class="testimonial-content-alt">
+                        <p>"I was skeptical about life coaching at first, but Mary's genuine approach and deep wisdom won me over. The holistic healing techniques she taught me have become essential tools in my daily life. I'm healthier, happier, and more aligned with my true self."</p>
+                    </div>
+                    <div class="testimonial-author-alt">
+                        <div class="author-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sophia R.</h4>
+                            <p>Artist & Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Begin Your Transformation Journey?</h2>
+            <p>Schedule a complimentary discovery call to explore how holistic coaching can help you achieve balance and fulfillment.</p>
+            <a href="contact.html" class="btn btn-light">Book Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>On Your Digital</h3>
+                    <p>Empowering Your Business Journey</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="uniform.html">School Uniforms</a></li>
+                        <li><a href="digital.html">Digital Marketing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="uniform.html">Uniform Supply</a></li>
+                        <li><a href="digital.html">AI Marketing</a></li>
+                        <li><a href="digital.html">Real Estate Marketing</a></li>
+                        <li><a href="coaching.html">Holistic Healing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> maryanitapj@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98947 47211</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Joans Nest SB4, Anus Apartment, Coimbatore - 641028</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 On Your Digital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Uniforms - On Your Digital</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/uniform-header.svg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(78, 87, 212, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .products {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-top: 4px solid #2c3e50;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image i {
+            font-size: 60px;
+            color: #999;
+        }
+        
+        .product-details {
+            padding: 20px;
+        }
+        
+        .product-details h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .product-details p {
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .product-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .process {
+            padding: 100px 0;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #eee;
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            min-width: 150px;
+            margin-bottom: 30px;
+            background-color: rgba(44, 62, 80, 0.05);
+            border-radius: 8px;
+            padding: 15px 10px;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step:nth-child(2) .step-number {
+            background-color: var(--secondary-color);
+        }
+        
+        .process-step:nth-child(3) .step-number {
+            background-color: var(--accent-color);
+        }
+        
+        .process-step:nth-child(4) .step-number {
+            background-color: var(--warning-color);
+        }
+        
+        .process-step h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .process-step p {
+            color: #777;
+            font-size: 14px;
+            padding: 0 10px;
+        }
+        
+        .faq {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .faq-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            border-left: 4px solid #2c3e50;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+        
+        @media (max-width: 768px) {
+            .process-steps::before {
+                display: none;
+            }
+            
+            .process-step {
+                flex: 0 0 50%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .process-step {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">On Your Digital</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="uniform.html" class="active">School Uniforms</a></li>
+                    <li><a href="digital.html">Digital Marketing</a></li>
+                    <li><a href="coaching.html">Life Coaching</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>School Uniforms</h1>
+            <p>Multi-brand shoes and uniforms with complete sales, delivery, and supply chain management</p>
+        </div>
+    </section>
+
+    <!-- About Uniform Business -->
+    <section class="about-service">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Uniform Business</h2>
+                <p>Providing quality school uniforms with comprehensive management solutions</p>
+            </div>
+            <div class="row">
+                <p>At On Your Digital, we specialize in providing high-quality school uniforms and shoes from multiple trusted brands. Our comprehensive service covers everything from marketing and sales to delivery, supply chain management, accounting, and customer follow-ups.</p>
+                <p>We understand that school uniforms are an essential part of educational institutions, representing identity and fostering a sense of belonging among students. Our mission is to make the process of uniform procurement and management seamless for schools, parents, and students alike.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Multi-Brand Selection</h3>
+                    <p>We offer a wide range of uniform options from multiple trusted brands, ensuring quality and variety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Efficient Delivery</h3>
+                    <p>Our streamlined delivery system ensures timely distribution of uniforms to schools and individual customers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Complete Management</h3>
+                    <p>From marketing to accounting, we handle all aspects of the uniform supply chain for seamless operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Customer Support</h3>
+                    <p>Our dedicated team provides ongoing support and regular follow-ups to ensure customer satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Products</h2>
+                <p>Quality uniforms and shoes for schools of all sizes</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="product-details">
+                        <h3>School Shirts & Blouses</h3>
+                        <p>High-quality cotton shirts and blouses available in various colors and sizes.</p>
+                        <span class="product-price">Starting from $15.99</span>
+                        <a href="contact.html" class="btn-text">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-socks"></i>
+                    </div>
+                    <div class="product-details">
+                        <h3>Trousers & Skirts</h3>
+                        <p>Durable and comfortable trousers and skirts designed for daily school wear.</p>
+                        <span class="product-price">Starting from $19.99</span>
+                        <a href="contact.html" class="btn-text">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="product-details">
+                        <h3>School Shoes</h3>
+                        <p>Comfortable and durable shoes from multiple trusted brands for all age groups.</p>
+                        <span class="product-price">Starting from $24.99</span>
+                        <a href="contact.html" class="btn-text">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="product-details">
+                        <h3>School Accessories</h3>
+                        <p>Ties, badges, belts, and other essential school uniform accessories.</p>
+                        <span class="product-price">Starting from $5.99</span>
+                        <a href="contact.html" class="btn-text">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Process</h2>
+                <p>How we manage the complete uniform supply chain</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Marketing & Sales</h3>
+                    <p>We promote our uniform solutions to schools and handle all sales processes efficiently.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Order Processing</h3>
+                    <p>Orders are processed through our streamlined system for accuracy and efficiency.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Supply & Delivery</h3>
+                    <p>We manage the entire supply chain and ensure timely delivery to all customers.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Follow-up & Support</h3>
+                    <p>Our team provides ongoing support and regular follow-ups for customer satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our uniform business</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do we place bulk orders for our school?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bulk orders can be placed through our dedicated school portal or by contacting our sales team directly. We offer special pricing and customization options for bulk school orders. Our team will guide you through the entire process from measurement to delivery.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What brands do you offer?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We partner with multiple trusted brands in the school uniform industry to provide a wide range of options. Some of our partner brands include SchoolWear, EduCloth, SmartStep Shoes, and ClassicUniform. All our products meet quality and durability standards required for school wear.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer customization for school logos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive customization services including embroidery and printing of school logos, names, and other identifiers on uniforms. We work closely with schools to ensure that all branding requirements are met with precision and quality.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is your delivery timeframe?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard delivery for individual orders typically takes 3-5 business days. For bulk school orders, delivery timeframes are determined based on order volume and customization requirements, usually ranging from 2-4 weeks. We also offer express delivery options for urgent requirements at an additional cost.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do you handle returns and exchanges?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have a customer-friendly return and exchange policy. Items in original condition can be returned within 30 days of purchase. Size exchanges are processed promptly to ensure students have properly fitting uniforms. For bulk orders, we work with schools to establish specific return protocols that meet their needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Streamline Your School Uniform Management?</h2>
+            <p>Contact us today to discuss how we can provide comprehensive uniform solutions for your school.</p>
+            <a href="contact.html" class="btn btn-light">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>On Your Digital</h3>
+                    <p>Empowering Your Business Journey</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="uniform.html">School Uniforms</a></li>
+                        <li><a href="digital.html">Digital Marketing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="uniform.html">Uniform Supply</a></li>
+                        <li><a href="digital.html">AI Marketing</a></li>
+                        <li><a href="digital.html">Real Estate Marketing</a></li>
+                        <li><a href="coaching.html">Holistic Healing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> maryanitapj@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98947 47211</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Joans Nest SB4, Anus Apartment, Coimbatore - 641028</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 On Your Digital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-question').forEach(item => {
+                    item.classList.remove('active');
+                    item.nextElementSibling.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

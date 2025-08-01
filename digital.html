@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing - On Your Digital</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/digital-header.svg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: #f4f4f4;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .service-image {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-image i {
+            font-size: 100px;
+            color: var(--primary-color);
+        }
+        
+        .service-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .service-text p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .service-features {
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        
+        .tools {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid #3498db;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .tool-icon i {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .tool-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .tool-card p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .industries {
+            padding: 100px 0;
+        }
+        
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .industry-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .industry-image {
+            height: 150px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .industry-image i {
+            font-size: 60px;
+            color: var(--primary-color);
+        }
+        
+        .industry-details {
+            padding: 20px;
+        }
+        
+        .industry-details h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .industry-details p {
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .case-studies {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-study-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-bottom: 4px solid #3498db;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .case-study-image {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-study-image i {
+            font-size: 80px;
+            color: #ddd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .case-study-details {
+            padding: 20px;
+        }
+        
+        .case-study-details h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .case-study-details .industry {
+            display: inline-block;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .case-study-details p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        @media (max-width: 992px) {
+            .service-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">On Your Digital</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="uniform.html">School Uniforms</a></li>
+                    <li><a href="digital.html" class="active">Digital Marketing</a></li>
+                    <li><a href="coaching.html">Life Coaching</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Digital Marketing</h1>
+            <p>AI-powered marketing tools and strategies for real estate and various industries</p>
+        </div>
+    </section>
+
+    <!-- About Digital Marketing -->
+    <section class="about-service">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI-Powered Digital Marketing</h2>
+                <p>Transforming businesses with cutting-edge marketing solutions</p>
+            </div>
+            <div class="row">
+                <p>At On Your Digital, we leverage the power of artificial intelligence to create innovative marketing strategies that drive results. Our comprehensive digital marketing services are designed to help businesses across various industries, with a special focus on real estate, to establish a strong online presence and achieve their marketing goals.</p>
+                <p>Our team of experts combines industry knowledge with advanced AI tools to deliver personalized marketing solutions that are tailored to your specific business needs. Whether you're looking to increase brand awareness, generate leads, or boost conversions, we have the expertise and technology to help you succeed in the digital landscape.</p>
+            </div>
+            
+            <div class="services-tabs">
+                <div class="tab-btn active" data-tab="ai-marketing">AI Marketing</div>
+                <div class="tab-btn" data-tab="real-estate">Real Estate Marketing</div>
+                <div class="tab-btn" data-tab="content">Content Strategy</div>
+                <div class="tab-btn" data-tab="social">Social Media</div>
+            </div>
+            
+            <div class="tab-content active" id="ai-marketing">
+                <div class="service-detail">
+                    <div class="service-text">
+                        <h3>AI-Powered Marketing Solutions</h3>
+                        <p>Our AI-powered marketing tools analyze vast amounts of data to identify patterns, predict trends, and optimize campaigns for maximum effectiveness. By leveraging machine learning algorithms, we can personalize marketing efforts at scale, ensuring that your message reaches the right audience at the right time.</p>
+                        <p>Our AI marketing solutions help businesses automate repetitive tasks, gain valuable insights from data, and make data-driven decisions that lead to better marketing outcomes.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Predictive Analytics</h4>
+                                    <p>Forecast market trends and customer behavior to stay ahead of the competition.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Automated Campaign Optimization</h4>
+                                    <p>Continuously improve campaign performance with AI-driven adjustments.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Personalized Customer Experiences</h4>
+                                    <p>Deliver tailored content and recommendations based on individual preferences.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="real-estate">
+                <div class="service-detail">
+                    <div class="service-text">
+                        <h3>Real Estate Marketing Expertise</h3>
+                        <p>Our specialized real estate marketing services are designed to help agents, brokers, and property developers showcase their listings effectively and connect with potential buyers. We understand the unique challenges of the real estate industry and offer tailored solutions to address them.</p>
+                        <p>From virtual property tours to targeted advertising campaigns, we leverage technology to make your properties stand out in a competitive market.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Virtual Property Showcases</h4>
+                                    <p>Create immersive virtual tours that allow potential buyers to explore properties remotely.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Targeted Listing Promotion</h4>
+                                    <p>Reach potential buyers with precision using demographic and behavioral targeting.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Lead Generation Systems</h4>
+                                    <p>Implement automated systems to capture and nurture potential buyer leads.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        <i class="fas fa-home"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="content">
+                <div class="service-detail">
+                    <div class="service-text">
+                        <h3>Content Strategy & Creation</h3>
+                        <p>Our content strategy services help businesses create valuable, relevant, and consistent content that attracts and retains a clearly defined audience. We develop comprehensive content plans that align with your business goals and resonate with your target audience.</p>
+                        <p>From blog posts and articles to videos and infographics, we create engaging content that drives traffic, builds authority, and converts visitors into customers.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>SEO-Optimized Content</h4>
+                                    <p>Create content that ranks well in search engines and drives organic traffic.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Multi-Format Content Creation</h4>
+                                    <p>Develop diverse content types to engage different audience segments.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Content Performance Analysis</h4>
+                                    <p>Track and analyze content metrics to continuously improve your strategy.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="social">
+                <div class="service-detail">
+                    <div class="service-text">
+                        <h3>Social Media Management</h3>
+                        <p>Our social media management services help businesses build and maintain a strong presence on social platforms. We develop tailored social media strategies that increase brand awareness, engage your audience, and drive website traffic.</p>
+                        <p>From content creation and scheduling to community management and paid advertising, we handle all aspects of your social media marketing to ensure consistent and effective results.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Platform-Specific Strategies</h4>
+                                    <p>Customize approaches for different social platforms to maximize effectiveness.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Community Engagement</h4>
+                                    <p>Build relationships with followers through active engagement and conversation.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Paid Social Campaigns</h4>
+                                    <p>Create and manage targeted advertising campaigns to reach specific audiences.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section class="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our AI Marketing Tools</h2>
+                <p>Cutting-edge technologies that power our marketing solutions</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics Engine</h3>
+                    <p>Our proprietary AI engine analyzes market trends and consumer behavior to predict future patterns and optimize marketing strategies.</p>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>AI Content Generator</h3>
+                    <p>Create high-quality, SEO-optimized content at scale with our advanced natural language processing technology.</p>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Campaign Optimization Platform</h3>
+                    <p>Automatically adjust campaign parameters in real-time to maximize ROI and achieve marketing objectives.</p>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Segmentation Tool</h3>
+                    <p>Identify and target specific customer segments with personalized marketing messages based on behavior and preferences.</p>
+                    <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-header">
+                <h2>Industries We Serve</h2>
+                <p>Tailored digital marketing solutions for various sectors</p>
+            </div>
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Real Estate</h3>
+                        <p>Specialized marketing solutions for agents, brokers, and property developers.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Retail & E-commerce</h3>
+                        <p>Drive online sales and enhance customer experience with our digital solutions.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Hospitality & Food</h3>
+                        <p>Attract more customers and build loyalty with targeted marketing campaigns.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Education</h3>
+                        <p>Connect with students and parents through effective digital marketing strategies.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Healthcare</h3>
+                        <p>Build trust and reach more patients with compliant healthcare marketing.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="industry-details">
+                        <h3>Professional Services</h3>
+                        <p>Establish authority and generate leads for your consulting or service business.</p>
+                        <a href="contact.html" class="btn-text">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Real results from our digital marketing strategies</p>
+            </div>
+            <div class="case-study-grid">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="case-study-details">
+                        <span class="industry">Real Estate</span>
+                        <h3>Luxury Property Marketing Campaign</h3>
+                        <p>How we helped a high-end real estate agency increase property viewings by 200% and reduce time-on-market by 45%.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-value">200%</span>
+                                <span class="stat-label">Increase in Viewings</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">45%</span>
+                                <span class="stat-label">Reduced Time-on-Market</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">320%</span>
+                                <span class="stat-label">ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="case-study-details">
+                        <span class="industry">E-commerce</span>
+                        <h3>AI-Driven Product Recommendation Engine</h3>
+                        <p>Implementing our AI product recommendation system for an online retailer resulting in a significant boost in average order value.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-value">35%</span>
+                                <span class="stat-label">Increased AOV</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">28%</span>
+                                <span class="stat-label">Higher Conversion</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">42%</span>
+                                <span class="stat-label">More Repeat Purchases</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="case-study-details">
+                        <span class="industry">Hospitality</span>
+                        <h3>Boutique Hotel Digital Transformation</h3>
+                        <p>A comprehensive digital strategy that helped a boutique hotel chain reduce dependency on booking platforms and increase direct reservations.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-value">150%</span>
+                                <span class="stat-label">More Direct Bookings</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">30%</span>
+                                <span class="stat-label">Reduced Commission Costs</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">85%</span>
+                                <span class="stat-label">Increased Revenue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Digital Marketing Strategy?</h2>
+            <p>Contact us today to discuss how our AI-powered solutions can help your business grow.</p>
+            <a href="contact.html" class="btn btn-light">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>On Your Digital</h3>
+                    <p>Empowering Your Business Journey</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="uniform.html">School Uniforms</a></li>
+                        <li><a href="digital.html">Digital Marketing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="uniform.html">Uniform Supply</a></li>
+                        <li><a href="digital.html">AI Marketing</a></li>
+                        <li><a href="digital.html">Real Estate Marketing</a></li>
+                        <li><a href="coaching.html">Holistic Healing</a></li>
+                        <li><a href="coaching.html">Life Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> maryanitapj@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98947 47211</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Joans Nest SB4, Anus Apartment, Coimbatore - 641028</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 On Your Digital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Services Tabs
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
